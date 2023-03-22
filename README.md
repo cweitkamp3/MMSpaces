@@ -3,7 +3,7 @@ This packages implements the Gromov-Wasserstein distance (approximated by a Frak
 
 ## Installation
 
-This package is developed under Linux (and WSL) and depends on [ThrustSort.jl](https://github.com/tscode/ThrustSort.jl) as well as [Network Simplex](https://github.com/nbonneel/network_simplex). Please check that the requirements for these libraries are met (in particular, ensusre that the executable `nvcc` can be found and that the thrust header files are available). To install, run
+This package is developed under Linux (and WSL) and depends on [ThrustSort.jl](https://github.com/tscode/ThrustSort.jl) as well as [Network Simplex](https://github.com/nbonneel/network_simplex). Please check that the requirements for these libraries are met (in particular, ensure that the executable `nvcc` can be found and that the thrust header files are available). To install, run
 
 ```julia
 using Pkg; Pkg.add(url="https://github.com/cweitkamp3/MMSpaces")
@@ -33,7 +33,7 @@ q = fill(1/m, m)
 @time      val1,plan1 = gromov_wasserstein(C1, C2, p, q; cuda = false)
 @CUDA.time val2,plan2 = gromov_wasserstein(C1, C2, p, q; cuda = true)
 ```
-It is important to note that the optimization problem considered here is highly non-convex. In particular, this means that the usage of GPU (activated with `cuda == true`), which transforms the data into Float32 arrays for performence reasons, can impact the results.
+It is important to note that the optimization problem considered here is highly non-convex. In particular, this means that the usage of a GPU (activated with `cuda == true`), which transforms the data into Float32 arrays for performance reasons, can impact the results.
 
 ## Lower Bounds
 Unfortunately, approximating the Gromov-Wasserstein distance via gradient descents has several drawbacks: It is computationally intensive and there is no guarantee that one ends up at a global optima. Hence, it has been proposed to work with efficiently computable lower bounds of said distance. Three of these lower bounds have been implemented in this package (see Mémoli (2011) and Chowdhury and Mémoli (2019) for the precise definitions). We start by presenting the usage of the First Lower Bound (FLB).
@@ -52,7 +52,7 @@ y2 = cu(y)
 ```
 While we do not obtain a coupling between the measure networks considered, we note that we obtain a comparable value in a fraction of the time.
 
-We make a similar observation for the Second Lower Bound (SLB).
+We make a similar observation for the Second Lower Bound (SLB) in this setting.
 ```julia
 slb(C1, C2; cuda = false)
 slb(C1, C2; cuda = true)
@@ -67,8 +67,7 @@ y2 = cu(y)
 @CUDA.time Euc_slb(x2, y2; cuda = true)
 ```
 
-Finally, we come to the Third Lower Bound (TLB). Here, we even obtain a matching between the measure networks considered. Although this lower bound has the highest
-computational comlpexity, it is always larger than the other two and returns a matching of the measure networks considered, which depending on the application and additional regularization used can be quite helpful for data interpretation. Still, the computation is significantly faster than that of the Gromov-Wasserstein distance.
+Finally, we come to the Third Lower Bound (TLB). Although this lower bound has the highest computational comlpexity of the ones presented here, it is always larger than the other two and returns a matching of the measure networks considered, which depending on the application and additional regularization used can be quite helpful for data interpretation. Still, the computation is significantly faster than that of the Gromov-Wasserstein distance.
 ```julia
 val3,plan3 = tlb(C1, C2; cuda = false, plan = true)
 val4,plan4 = tlb(C1, C2; cuda = true)
@@ -83,7 +82,7 @@ y2 = cu(y)
 @CUDA.time Euc_tlb(x, y; cuda = true)
 ```
 ## Tests
-Another advantage of the lower bounds presented is the fact that they are statistically accessible. Hence, it is possible to construct asymptotic tests for equivalence testing as well as testing for relevant differences on these lower blounds (see Mordant et al. (2023)). More precisely given independent samples from two measure networks (C₁, p) and (C₂, q), we can construct tests for
+Another advantage of the lower bounds presented is the fact that they are statistically accessible. Hence, it is possible to construct asymptotic tests for equivalence testing as well as testing for relevant differences based on these lower blounds (see Mordant et al. (2023)). More precisely given independent samples from two measure networks (C₁, p) and (C₂, q), we can construct tests for
 
 ``H₀ = LB((C₁,p), (C₂, q)) > Δ`` versus ``H₁ = LB((C₁, p), (C₂, q)) ≤ Δ``  `(Equivalence Testing)`
 
@@ -93,7 +92,7 @@ and
 
 where LB stands for either FLB, SLB or TLB. 
 
-In order to showcase the differences beween the resulting tests let us consider the subsequent example:
+In order to showcase the differences beween the resulting tests, let us consider the subsequent example:
 ```julia
 function spiral_dist(n,v)
     sig = 0.03
