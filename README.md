@@ -84,11 +84,11 @@ y2 = cu(y)
 ## Tests
 Another advantage of the lower bounds presented is the fact that they are statistically accessible. Hence, it is possible to construct asymptotic tests for equivalence testing as well as testing for relevant differences based on these lower blounds (see Mordant et al. (2023)). More precisely given independent samples from two measure networks (C₁, p) and (C₂, q), we can construct tests for
 
-`H₀ = LB((C₁,p), (C₂, q)) > Δ`` versus ``H₁ = LB((C₁, p), (C₂, q)) ≤ Δ`  (Equivalence Testing)
+`H₀ = LB((C₁,p), (C₂, q)) > Δ` versus `H₁ = LB((C₁, p), (C₂, q)) ≤ Δ`  (Equivalence Testing)
 
 and
 
-`H₀ = LB((C₁,p), (C₂, q)) ≤ Δ`` versus ``H₁ = LB((C₁, p), (C₂, q)) > Δ`  (Testing for Relevant Differences),
+`H₀ = LB((C₁,p), (C₂, q)) ≤ Δ` versus `H₁ = LB((C₁, p), (C₂, q)) > Δ`  (Testing for Relevant Differences),
 
 where LB stands for either FLB, SLB or TLB. 
 
