@@ -1,5 +1,5 @@
 # MMSpaces
-This packages implements the Gromov-Wasserstein distance (approximated by a Frak-Wolfe algortihm), its polynomial time computable lower bounds (see Mémoli (2011) and Chowdhury and Mémoli (2019) for more information) and the statistical tools for the analysis of metric measure spaces (or more general (undirected) measure networks) proposed in Mordant et al. (2023).
+This packages implements the Gromov-Wasserstein distance (approximated by a Frak-Wolfe algortihm), its polynomial time computable lower bounds (see Mémoli (2011) and Chowdhury and Mémoli (2019) for more information) and the statistical tools for the analysis of metric measure spaces (or more general measure networks) proposed in Mordant et al. (2023).
 
 ## Installation
 
@@ -10,7 +10,7 @@ using Pkg; Pkg.add(url="https://github.com/cweitkamp3/MMSpaces")
 ```
 In the following, we briefly illustrate the usage of the main functions in simple settings.
 ## Gromov-Wasserstein
-First of all, we illustrate the algorithm for approximating (local minima of) the Gromov-Wasserstein distance, which is a popular tool for various data analysis tasks. Consider the following example:
+First of all, we showcase the algorithm for approximating (local minima of) the Gromov-Wasserstein distance, which is a popular tool for various data analysis tasks. Consider the following example:
 ```julia
 using MMSpaces
 using Distributions
