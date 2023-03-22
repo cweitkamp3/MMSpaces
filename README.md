@@ -1,5 +1,5 @@
 # MMSpaces
-This packages implements the Gromov-Wasserstein distance (approximated by a Frak-Wolfe algortihm), its polynomial time computable lower bounds (see Mémoli (2011) and Chowdhury and Mémoli (2019) for more information) and the statistical tools for the analysis of metric measure spaces (or more general measure networks) proposed in Mordant et al. (2023).
+This packages implements the Gromov-Wasserstein distance (approximated by a Frak-Wolfe algorithm), its polynomial time computable lower bounds (see Mémoli (2011) and Chowdhury and Mémoli (2019) for more information) and the statistical tools for the analysis of metric measure spaces (or more general measure networks) proposed in Mordant et al. (2023).
 
 ## Installation
 
