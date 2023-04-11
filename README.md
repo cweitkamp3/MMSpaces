@@ -33,7 +33,7 @@ q = fill(1/m, m)
 @time      val1,plan1 = gromov_wasserstein(C1, C2, p, q; cuda = false)
 @CUDA.time val2,plan2 = gromov_wasserstein(C1, C2, p, q; cuda = true)
 ```
-It is important to note that the optimization problem considered here is highly non-convex. In particular, this means that the usage of a GPU (activated with `cuda == true`), which transforms the data into Float32 arrays for performance reasons, can impact the results.
+It is important to note that the optimization problem considered here is highly non-convex. In particular, this means that the usage of a GPU (activated with `cuda = true`), which transforms the data into Float32 arrays for performance reasons, can impact the results.
 
 ## Lower Bounds
 Unfortunately, approximating the Gromov-Wasserstein distance via gradient descents has several drawbacks: It is computationally intensive and there is no guarantee that one ends up at a global optima. Hence, it has been proposed to work with efficiently computable lower bounds of said distance. Three of these lower bounds have been implemented in this package (see Mémoli (2011) and Chowdhury and Mémoli (2019) for the precise definitions). We start by presenting the usage of the First Lower Bound (FLB).
@@ -72,7 +72,7 @@ Finally, we come to the Third Lower Bound (TLB). Although this lower bound has t
 val3,plan3 = tlb(C1, C2; cuda = false, plan = true)
 val4,plan4 = tlb(C1, C2; cuda = true)
 val5,plan5 = Euc_slb(x, y; cuda = true)
-val6,plan6 = tlbtlb(x, y, p, q)
+val6,plan6 = tlb(x, y, p, q)
 
 # Timing the functions
 @time Euc_tlb(x, y; cuda = false)
